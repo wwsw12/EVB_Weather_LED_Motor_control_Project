@@ -26,16 +26,7 @@
 
 ## 3. 실행 관계
 
-```mermaid
-flowchart TD
-    ADC["ADC 연속 2채널 변환"] --> DMA["DMA 순환 버퍼 갱신"]
-    DMA --> LOOP["메인 루프: 조도 평균 / 명령 / 출력"]
-    UART["USART2 IRQ: 1바이트 수신"] --> CB["수신 콜백: 버퍼 기록 / 재등록"]
-    CB --> LOOP
-    LOOP -->|"X 차이 >= 500"| HOLD["holding_function: 모터 정지 / LED 전환"]
-    HOLD -->|"PLAY 또는 END 비교"| LOOP
-    TICK["SysTick: HAL_IncTick"] --> HOLD
-```
+![런타임 실행 관계](images/evb-runtime-execution.png)
 
 | 실행 경로 | 실제 동작 |
 |---|---|
