@@ -24,15 +24,7 @@
 
 ## 3. 시스템 아키텍처
 
-```mermaid
-flowchart LR
-    L["조도 입력"] -->|ADC1| M["STM32F103RB"]
-    X["가속도 X 입력"] -->|ADC1| M
-    P["PC 터미널"] -->|UART RX| M
-    M -->|UART TX| P
-    M -->|PWM + GPIO| D["모터 구동부"]
-    M -->|PWM| R["RGB LED"]
-```
+![시스템 아키텍처](docs/evb-system-architecture.png)
 
 화살표는 **코드가 취급하는 데이터·제어 방향**이며, 실제 배선이나 구동 회로의 존재를 증명하지 않습니다. DMA는 MCU 내부의 ADC→메모리 전송입니다. 핀은 아래 표와 [하드웨어 문서](docs/02_hardware.md)에 분리했습니다.
 
